@@ -1,4 +1,5 @@
 /// Local array to store todo items
+let todos = [];
 
 function validateForm(todo, date){
     if (todo.trim() === ''|| date.trim() === '') {
@@ -18,13 +19,11 @@ function addTodo() {
     if (!validateForm(todoInput, todoDate)) {
         alert('Form validation failed. Please check your inputs.');
     } else {
-        // Add to local array
-        todos.push({ task: todoInput, dueDate: todoDate });
-
-        renderTodos();
+        // Code to add todo item to the array and render it
+        todos.push({ task: todoInput, duedate: todoDate });
+        console.log('current todos:', todos);
     }
 }
-
 /// Placeholder function for future feature
 function deleteTodo() {
 
