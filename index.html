@@ -5,90 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodingCamp271025</title>
 
-    <!-- CSS External File Linl -->
-     <link rel="stylesheet" href="css/style.css"
+    <!-- CSS External File Link -->
+    <link rel="stylesheet" href="css/style.css">
 
-    <!-- Taildwind CSS CDN Link -->
+    <!-- Tailwind CSS CDN Link -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
-    body {
-      background-color: #0a0f24;
-      color: #e5e7eb;
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
+        body {
+            background-color: #0a0f24;
+            color: #e5e7eb;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
 
     <div class="bg-[#1b2033] shadow-xl rounded-xl p-10 w-full max-w-4xl border border-[#2a324b]">
-    
-    <!-- Header Content -->
-     <header>
 
-        <h1 class="text-3xl font-bold text-center mb-10">Todo List</h1>
-    </header>
+        <!-- Header Content -->
+        <header>
+            <h1 class="text-3xl font-bold text-center mb-10">Todo List</h1>
+        </header>
 
-    <!-- Main Content -->
-      <main>
-     <!-- Form Section -->
-      <section>
-       <form id="todo-form" class="flex items-center gap-4 mb-6 ons>
-            <!-- Todo Input-->
-             <div class="flex items-center gap-2 mb-6">
-             <input type="text" id="todo-input" placeholder="Add a todo..."
-             class="flex-1 px-4 py-3 bg-[#0e1525] border border-[#313b53] rounded-lg focus:outline-none focus:ring focus:ring-blue-500 placeholder-gray-400">
+        <!-- Main Content -->
+        <main>
+            <!-- Form Section -->
+            <section>
+                <form id="todo-form" class="flex items-center gap-4 mb-6">
+                    <!-- Todo Input -->
+                    <input type="text" id="todo-input" placeholder="Add a todo..."
+                        class="flex-1 px-4 py-3 bg-[#0e1525] border border-[#313b53] rounded-lg focus:outline-none focus:ring focus:ring-blue-500 placeholder-gray-400">
 
-             <!-- Date Input -->
-              <input type="date" id="todo-date" placeholder="Enter due date"
-              class="w-48 px-4 py-3 bg-[#0e1525] border border-[#313b53] rounded-lg focus:outline-none focus:ring focus:ring-blue-500 text-gray-300">
-                  <!-- add todo -->
-       <button type="button" onclick="addTodo();" id="add-todo-btn" class="w-14 h-14 flex items-center justify-center bg-[#7c8cff] hover:bg-[#6d7bf2] rounded-lg text-3xl font-bold transition">+</button>
-       </form>
+                    <!-- Date Input -->
+                    <input type="date" id="todo-date"
+                        class="w-48 px-4 py-3 bg-[#0e1525] border border-[#313b53] rounded-lg focus:outline-none focus:ring focus:ring-blue-500 text-gray-300">
 
-   <br>
-       </section>
-       <!-- Action Section -->
-         <div class="flex justify-between items-center mb-6">
-            <button id="filter-btn" class="px-6 py-2 bg-[#2d3a59] hover:bg-[#3b4d75] rounded-lg font-medium tracking-wide">FILTER</button>
-            <button id="delete-all-btn" class="px-6 py-2 bg-[#7c8cff] hover:bg-[#6d7bf2] rounded-lg font-medium tracking-wide">DELETE ALL</button>
-        </div>
+                    <!-- Add Todo Button -->
+                    <button type="button" onclick="addTodo();" id="add-todo-btn"
+                        class="w-14 h-14 flex items-center justify-center bg-[#7c8cff] hover:bg-[#6d7bf2] rounded-lg text-3xl font-bold transition">+</button>
+                </form>
+            </section>
 
-       <!-- Todo List Section -->
-        <section>
-            <div class="bg-[#0e1525] rounded-lg border border-[#26324d] overflow-hidden">
-            <table class="w-full text-left text-gray-300">
-                <thead class="bg-[#131b2e] text-sm uppercase tracking-wider text-gray-400">
-                    <tr>
-                        <th class="py-4 px-4">Task</th>
-                        <th class="py-4 px-4">Due Date</th>
-                        <th class="py-4 px-4">Status</th>
-                        <th class="py-4 px-4">Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="todo-list">
-                    <tr>
-                        <td colspan="4" class="text-center py-10 text-lg text-gray-400">No task found</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+            <!-- Action Section -->
+            <div class="flex justify-between items-center mb-6">
+                <button id="filter-btn" class="px-6 py-2 bg-[#2d3a59] hover:bg-[#3b4d75] rounded-lg font-medium tracking-wide">FILTER</button>
+                <button type="button" onclick="deleteTodo();" id="delete-all-btn"
+                class="px-6 py-2 bg-[#7c8cff] hover:bg-[#6d7bf2] rounded-lg font-medium tracking-wide">DELETE ALL</button>
+            </div>
 
-   
-        </section>
+            <!-- Todo List Section -->
+            <section>
+                <div class="bg-[#0e1525] rounded-lg border border-[#26324d] overflow-hidden">
+                    <table class="w-full text-left text-gray-300">
+                        <thead class="bg-[#131b2e] text-sm uppercase tracking-wider text-gray-400">
+                            <tr>
+                                <th class="py-4 px-4">Task</th>
+                                <th class="py-4 px-4">Due Date</th>
+                                <th class="py-4 px-4">Status</th>
+                                <th class="py-4 px-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="todo-list">
+                            <tr id="no-task-row">
+                                <td colspan="4" class="text-center py-10 text-lg text-gray-400">No task found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
 
-      </main>
-
-    <!-- Footer Content -->
-       <footer <footer class="text-center text-sm text-gray-400 pt-4 border-t border-[#2a324b]">
+        <!-- Footer Content -->
+        <footer class="text-center text-sm text-gray-400 pt-4 border-t border-[#2a324b]">
             © 2025 CodingCampRevou 27102025 Jaka Hariyono — All rights reserved.
         </footer>
+    </div>
 
-    <!-- Javascript External File Link -->
-     <script src="js/script.js"></script>
- </div>
-    
-
+    <!-- JavaScript External File Link -->
+    <script src="js/script.js"></script>
 </body>
-  
+
 </html>

@@ -3,13 +3,10 @@ let todos = [];
 
 function validateForm(todo, date){
     if (todo.trim() === ''|| date.trim() === '') {
-        // alert('Todo item cannot be empty.');
         return false;
     }
     return true;
 }
- 
-
 
 /// Function to add a new todo item
 function addTodo() {
@@ -19,22 +16,44 @@ function addTodo() {
     if (!validateForm(todoInput, todoDate)) {
         alert('Form validation failed. Please check your inputs.');
     } else {
-        // Code to add todo item to the array and render it
-        todos.push({ task: todoInput, duedate: todoDate });
-        console.log('current todos:', todos);
+        // Add new todo into array
+        todos.push({ task: todoInput, dueDate: todoDate, status: 'Send', action:  'follow up' });
+        renderTodos();
     }
 }
-/// Placeholder function for future feature
-function deleteTodo() {
 
-}
-
-/// Placeholder functions for future features
-function filterTodo() {
-
+// /// Function to delete a todo item
+function deleteTodo(index) {
+    todos.splice(index, 1); // Remove the item at index
+    renderTodos(); // Refresh the list after deleting
 }
 
 /// Function to render todo items to the DOM
 function renderTodos() {
+    const todoList = document.getElementById('todo-list');
 
+    // Clear current list
+    todoList.innerHTML = '';
+
+    // If no todos exist, show "No task found" message
+    if (todos.length === 0) {
+        todoList.innerHTML = `
+            <tr id="no-task-row">
+                <td colspan="4" class="text-center py-10 text-lg text-gray-400">No task found</td>
+            </tr>
+        `;
+        return;
+    }
+
+    // Render each todo item into table rows
+    todos.forEach((todo, index) => {
+        todoList.innerHTML += `
+            <tr class="border-b border-[#26324d]">
+                <td class="py-4 px-4">${todo.task}</td>
+                <td class="py-4 px-4">${todo.dueDate}</td>
+                <td class="py-4 px-4">${todo.status}</td>
+                <td class="py-4 px-4">${todo.action}</td>
+            </tr>
+        `;
+    });
 }
