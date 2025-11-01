@@ -1,12 +1,28 @@
 /// Local array to store todo items
-console.log('hello wold');
-function validateForm(todo, date) {
- 
+
+function validateForm(todo, date){
+    if (todo.trim() === ''|| date.trim() === '') {
+        // alert('Todo item cannot be empty.');
+        return false;
+    }
+    return true;
 }
+ 
+
 
 /// Function to add a new todo item
 function addTodo() {
-console.log('+');
+    const todoInput = document.getElementById('todo-input').value;
+    const todoDate = document.getElementById('todo-date').value;
+
+    if (!validateForm(todoInput, todoDate)) {
+        alert('Form validation failed. Please check your inputs.');
+    } else {
+        // Add to local array
+        todos.push({ task: todoInput, dueDate: todoDate });
+
+        renderTodos();
+    }
 }
 
 /// Placeholder function for future feature
