@@ -49,7 +49,15 @@
 
             <!-- Action Section -->
             <div class="flex justify-between items-center mb-6">
-                <button id="filter-btn" class="px-6 py-2 bg-[#2d3a59] hover:bg-[#3b4d75] rounded-lg font-medium tracking-wide">FILTER</button>
+                <input 
+                type="text" 
+                id="filter-input" 
+                placeholder="Type to filter..." 
+                class="flex-1 px-4 py-2 bg-[#0e1525] border border-[#313b53] rounded-lg focus:outline-none focus:ring focus:ring-blue-500 text-gray-300 mr-4"/>
+                <button 
+                id="filter-btn" 
+                onclick="filterTodos();" 
+                 class="px-6 py-2 bg-[#2d3a59] hover:bg-[#3b4d75] rounded-lg font-medium tracking-wide">FILTER</button>
                 <button type="button" onclick="deleteTodo();" id="delete-all-btn"
                 class="px-6 py-2 bg-[#7c8cff] hover:bg-[#6d7bf2] rounded-lg font-medium tracking-wide">DELETE ALL</button>
             </div>
